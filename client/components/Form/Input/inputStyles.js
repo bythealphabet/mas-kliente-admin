@@ -8,6 +8,11 @@ export default css`
   .label {
     font-size: 0.8rem;
     font-weight: 600;
+
+    @media (min-width: 900px) {
+      font-size: 1.1rem;
+      margin-bottom: 0em;
+    }
   }
 
   .input {
@@ -26,7 +31,7 @@ export default css`
   }
 
   .input:focus {
-    border-color: #222;
+    border-color: #2222;
     transform: scale(1.01);
     outline: none;
   }

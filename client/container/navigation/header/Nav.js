@@ -12,7 +12,8 @@ function Nav({ active }) {
   `;
 
   const navStyles = css`
-    background-color: salmon;
+    z-index: 10;
+    background-color: #eeee;
     position: absolute;
     top: var(--headerHeight);
     left: 0;
