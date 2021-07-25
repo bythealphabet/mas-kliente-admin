@@ -1,45 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Nav from "./Nav";
+import Hamburger from "./Hamburger";
 
 function Header() {
+  const [active, setActive] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActive(false);
+  }, [location]);
+
+  const hamburgerHandler = () => {
+    setActive((prev) => !prev);
+  };
+
   const headerStyles = css`
-    border: solid 1px black;
+    /* border: solid 1px black; */
     grid-column: 1 / -1;
     grid-row: 1;
 
+    display: grid;
+    grid-template-rows: 1fr;
+
+    @media (min-width: 900px) {
+      grid-column: 2 / -2;
+      grid-row: 1;
+    }
+
     .logo {
-      grid-column: 2 / span 2;
+      grid-column: 1 / span 3;
       align-self: center;
-    }
-
-    nav {
-      grid-column: 5 / -2;
-
-      align-self: center;
-    }
-
-    ul {
-      display: flex;
-      justify-content: space-between;
     }
   `;
+
+  console.log("active", active);
   return (
     <div className="main-grid" css={headerStyles}>
-      <div className="logo">Mas Kliente Admin</div>
-      <nav className="header-nav">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">About</Link>
-          </li>
-          <li>
-            <Link to="/">Sign In</Link>
-          </li>
-        </ul>
-      </nav>
+      <Link to="/" className="logo">
+        <div>LOGO HERE</div>
+      </Link>
+      <Nav active={active} />
+      <Hamburger active={active} setActive={hamburgerHandler} />
       <div className="hamburger"></div>
     </div>
   );
