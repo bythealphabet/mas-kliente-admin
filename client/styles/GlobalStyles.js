@@ -16,13 +16,25 @@ function GlobalStyles() {
         :root {
           --headerHeight: 80px;
           --footerHeight: 100px;
+          --darkColor: #4f4f4f;
         }
 
         html,
         body {
           font-family: "Roboto", sans-serif;
-          color: #333333;
+          color: #4f4f4f;
           font-size: 16px;
+        }
+
+        #root {
+          overflow: hidden;
+          position: relative;
+          height: 100%;
+        }
+
+        img {
+          max-height: 100%;
+          display: block;
         }
 
         a {

@@ -1,5 +1,6 @@
 import React from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
+import { Link } from "react-router-dom";
 import mainContentLayout from "../../../styles/mainContentStyles";
 import Input from "../../../components/Form/Input/Input";
 import authStyles from "./authStyles";
@@ -23,7 +24,6 @@ function Signup() {
 
   function submit(e) {
     e.preventDefault();
-    console.log("sumi");
     onSubmit(create, inputData);
   }
 
@@ -57,6 +57,10 @@ function Signup() {
               Submit
             </button>
           </form>
+
+          <Link to="/signin" className="second-option">
+            Do you have an account? Sign in
+          </Link>
         </>
       )}
     </section>

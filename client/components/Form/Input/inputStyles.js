@@ -23,7 +23,7 @@ export default css`
     padding: 0.8em;
     border: 2px solid #485563;
     transform: scale(1);
-    transition: transform 0.25s ease;
+    transition: transform 0.35s ease;
   }
 
   .input-shadow {

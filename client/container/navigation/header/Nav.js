@@ -14,7 +14,7 @@ function Nav({ active }) {
   const navStyles = css`
     z-index: 10;
     background-color: #eeee;
-    position: absolute;
+    position: fixed;
     top: var(--headerHeight);
     left: 0;
     right: 0;
@@ -65,11 +65,14 @@ function Nav({ active }) {
           <Link to="/about">About</Link>
         </li>
         <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+        {/* <li>
           <Link to="/signin">Sign In</Link>
         </li>
         <li>
           <Link to="/signup">Sign Up</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

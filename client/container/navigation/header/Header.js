@@ -3,6 +3,7 @@ import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import { Link, useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
+import NavLogo from "./NavLogo";
 
 function Header() {
   const [active, setActive] = useState(false);
@@ -30,20 +31,38 @@ function Header() {
     }
 
     .logo {
-      grid-column: 1 / span 3;
+      grid-column: 2 / span 3;
       align-self: center;
+
+      height: var(--headerHeight);
+      img {
+        height: 100%;
+      }
+
+      @media (min-width: 900px) {
+        grid-column: 1 / span 3;
+      }
     }
   `;
 
   console.log("active", active);
+  console.log("location", location.pathname);
   return (
     <div className="main-grid" css={headerStyles}>
       <Link to="/" className="logo">
-        <div>LOGO HERE</div>
+        <NavLogo />
       </Link>
-      <Nav active={active} />
-      <Hamburger active={active} setActive={hamburgerHandler} />
-      <div className="hamburger"></div>
+      {location.pathname == "/signup" ? null : (
+        <>
+          <Nav active={active} />
+          <Hamburger
+            active={active}
+            setActive={hamburgerHandler}
+            dark={location.pathname === "/" ? true : false}
+          />
+          <div className="hamburger"></div>
+        </>
+      )}
     </div>
   );
 }

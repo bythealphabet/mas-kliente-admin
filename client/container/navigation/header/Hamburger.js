@@ -1,6 +1,16 @@
 import { jsx, css, keyframes } from "@emotion/react"; /** @jsx jsx */
 
-const Hamburger = ({ active, setActive }) => {
+const Hamburger = ({ active, setActive, dark }) => {
+  console.log("dark", dark);
+
+  const burgerColor = {
+    white: css`
+      background-color: #ffff;
+    `,
+    black: css`
+      background-color: var(--darkColor);
+    `,
+  };
   const hamburger = css`
     width: 30px;
     height: 20px;
@@ -16,8 +26,8 @@ const Hamburger = ({ active, setActive }) => {
     align-self: center;
 
     span {
-      background: #000;
-      /* background: #fff; */
+      ${dark ? burgerColor.white : burgerColor.black}
+
       border-radius: 3px;
       display: block;
       height: 0.12em;

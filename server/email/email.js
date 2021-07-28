@@ -1,4 +1,6 @@
 const nodeMailer = require("nodemailer");
+import dotenv from "dotenv";
+dotenv.config();
 
 export function sendEmailWithNodemailer(req, res, emailData) {
   const transporter = nodeMailer.createTransport({
@@ -8,7 +10,7 @@ export function sendEmailWithNodemailer(req, res, emailData) {
     requireTLS: true,
     auth: {
       user: "clickkorsou@gmail.com", // MAKE SURE THIS EMAIL IS YOUR GMAIL FOR WHICH YOU GENERATED APP PASSWORD
-      pass: "nnxbrjahgipzjiix", // MAKE SURE THIS PASSWORD IS YOUR GMAIL APP PASSWORD WHICH YOU GENERATED EARLIER
+      pass: process.env.GOOGLE_SMTP_PASS, // MAKE SURE THIS PASSWORD IS YOUR GMAIL APP PASSWORD WHICH YOU GENERATED EARLIER
     },
     tls: {
       ciphers: "SSLv3",
